@@ -1,0 +1,35 @@
+Naive approach:
+1. Start with list of types of things we actually care about
+2. Crawl every named thing in the file adding them to a cache of results
+3. On completion event, just return all of them all the time
+
+More mature approach:
+The naive approach, BUT we change the completion items based on scope and context
+
+More2 mature approach:
+Attempt to derive some of the runtime information that's available, just based on what we've seen
+
+Example:
+const ourFunc = function(input1){
+	// At this point, it would be useful to show completions relevant to the actual thing in input1
+	// NOT just those properties defined in annotations or whatever
+	input1.
+}
+
+Complicating factor and potential solution:
+// Place 1 in file 1
+let thing = {test: "Hey!"};
+ourFunc(thing);
+
+// Place 2 in file 2
+let otherThing = {worker: function(){/* ... */}};
+ourFunc(otherThing);
+
+// What we should suggest??
+// It's actually a merger of thing and otherThing
+Suggestions:
+test
+worker
+
+More3 mature approach:
+Allow function annotations to specify desired properties of its inputs

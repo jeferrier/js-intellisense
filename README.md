@@ -1,6 +1,6 @@
-# LSP Example
+# Javascript Intellisense
 
-Heavily documented sample code for https://code.visualstudio.com/api/language-extensions/language-server-extension-guide
+This project was originally created from the heavily documented sample code for https://code.visualstudio.com/api/language-extensions/language-server-extension-guide
 
 ## Functionality
 
