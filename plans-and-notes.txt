@@ -6,14 +6,17 @@ Naive approach:
 More mature approach:
 The naive approach, BUT we change the completion items based on scope and context
 
-More2 mature approach:
+More2
+More3
+
+More200 mature approach:
 Attempt to derive some of the runtime information that's available, just based on what we've seen
 
 Example:
 const ourFunc = function(input1){
 	// At this point, it would be useful to show completions relevant to the actual thing in input1
 	// NOT just those properties defined in annotations or whatever
-	input1.
+	input1.|
 }
 
 Complicating factor and potential solution:
@@ -31,5 +34,16 @@ Suggestions:
 test
 worker
 
-More3 mature approach:
+More3000 mature approach:
 Allow function annotations to specify desired properties of its inputs
+
+Task 1:
+Y - Tell the extension to trigger on javascript files
+Set up completion in the extension
+	For this, we are going to scoop the style of stuff from svelte
+Set up completion in the editor based on the results from the extension
+Tell the extension it can load other files besides just those open
+
+
+Implementing the naive approach:
+Crawl the AST for nodes we care about

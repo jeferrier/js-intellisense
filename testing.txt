@@ -1,0 +1,10 @@
+Scenarios to test:
+
+It should detect require/define calls that can't be resolved, and mark them as errors
+It should detect when a module doesn't return a value, and emit a warning "Side effect functions are bad" or something
+	Should there be a config for this?
+It should detect libraries required from node_modules and correctly reference them
+
+
+Scenarios in tests already:
+-

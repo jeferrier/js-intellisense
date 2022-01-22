@@ -1,16 +1,12 @@
 {
-	"name": "lsp-sample-client",
-	"description": "VSCode part of a language server",
-	"author": "Microsoft Corporation",
+	"name": "js-intellisense-client",
+	"description": "Client for the Javascript Intellisense Langue Server",
+	"author": "James Ferrier",
 	"license": "MIT",
 	"version": "0.0.1",
-	"publisher": "vscode",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Microsoft/vscode-extension-samples"
-	},
+	"publisher": "jeferrier",
 	"engines": {
-		"vscode": "^1.52.0"
+		"vscode": "^1.63.2"
 	},
 	"dependencies": {
 		"vscode-languageclient": "^7.0.0"
