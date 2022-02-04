@@ -8,6 +8,8 @@
 		"node": "*"
 	},
 	"dependencies": {
+		"acorn": "^8.7.0",
+		"acorn-loose": "^8.3.0",
 		"vscode-languageserver": "^7.0.0",
 		"vscode-languageserver-textdocument": "^1.0.1"
 	},

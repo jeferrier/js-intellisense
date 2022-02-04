@@ -16,5 +16,9 @@ module.exports = {
 		'@typescript-eslint/no-explicit-any': 0,
 		'@typescript-eslint/explicit-module-boundary-types': 0,
 		'@typescript-eslint/no-non-null-assertion': 0,
+
+		'space-infix-ops': ['error'],
+		'space-before-blocks': ['error', 'always'],
+		'curly': ['error', 'all']
 	}
 };

@@ -47,3 +47,70 @@ Tell the extension it can load other files besides just those open
 
 Implementing the naive approach:
 Crawl the AST for nodes we care about
+
+
+------
+Structured data format for the components:
+Scoping - When a variable does or does not have a definition should affect Suggestions
+	{
+		// something will either be a string for easy matching, or an object for
+		// dead simple === comparison
+		// something can also be 'global' and this is the default
+		// something can also be 'program' and this is like global, but confined
+		// to the one file
+		// 		We need to support this for things not exported/not require'd
+		scope: something // the scope in which this variable is defined
+	}
+Estimated type - We can derive type and value information from code structure, but
+	it can never completely accurate on the level of TS. That's fine.
+	{
+		startposition: 0,
+		endposition: 50,
+		// estimatedType will most likely be a string, but would be easily parsible,
+		// probably non-regular
+		estimatedType: 'number | any',
+		// most likely a string etc. used to store conditionally derived information
+		// implementing this will be the biggest performance suck
+		// we'll do it last, and we may chuck huge sections of it
+		// or completely get rid of it
+		valueConditions: 'X > 0 | '
+	}
+File level reference chains - Which files require which
+	{
+		requiredBy: ['file1', 'file2', 'etc.'],
+		requiers: ['file3', 'etc.'],
+		requireType: 'module' OR 'require' OR 'dynamic import' OR 'define (AMD)'
+	}
+Function call estimation - Estimating types inside a function, from those places where it is called
+	See example on L:15
+	This may yield too many false negatives on property types.
+		Is that a problem we should address in intellisense?
+		Or does it indicate that the structure of the code is not sufficient to describe
+		what is actually going on? i.e. You need to add more docblocks
+Object property tracking - Which properties exist on objects and their types
+
+Biggest performance concern here is querying the components.
+We want to be able to query:
+	quickly
+	across open files AND non-open files
+	to get accurate results
+
+Can we parse comments with acorn?
+	Yes, requires custom callback to be written to handle the block parsing
+
+Comment parsing:
+	Allow for generic types
+
+
+Unexpected Token (what can we do???):
+	acorn provides a loose parser which we can use to get nodes BEFORE the problem
+	node. Using this, and the node type, we could guess why the node is invalid
+	This is a very finicky process, and not excited about using it to actively detect
+	syntax errors
+
+1. When unexpected Token
+2. Spin up the loose parser
+3. Find the node that fully contains our error
+4. If the node is one of the 'standard' nodes we implement meaningful output for
+5. Emit a specific syntax error for that
+5. Otherwise just emit the standard unexpected token error
